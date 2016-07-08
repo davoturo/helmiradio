@@ -53,9 +53,10 @@ def get_songs():
 	ws.title = "Helmiradio song list"
 	"""
 	for s in s_list:
-		#  save_to_csv_file(s.timestamp, s.artist.encode("utf-8"), s.song.encode("utf-8")) 
+
+		#  save_to_csv_file(s.timestamp, s.artist.encode("utf-8"), s.song.encode("utf-8")) #  uncomment to save as csv file
 		
-		#ws.append([s.timestamp, s.artist, s.song])
+		#  ws.append([s.timestamp, s.artist, s.song])
 
 		print "%s; \'%s - %s\'" % (s.timestamp, s.artist, s.song)
 
@@ -80,12 +81,13 @@ def convert_time(time_in_milliseconds):
 	song_time = time_in_milliseconds / 1000 # changes time to seconds 
 	song_time = time.strftime("%d/%m/%Y %H:%M", time.localtime(song_time)) # formats time
 
-	return song_time
+	return song_time # return formatted time
 
-
+#  main
 def main():
-
+	#  calls get_songs()
 	get_songs()
 
 
+#  calls main
 main()
