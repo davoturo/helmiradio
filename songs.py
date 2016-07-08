@@ -8,20 +8,19 @@ import csv
 import openpyxl
 
 
+# saves the song info to a easier to edit format
 class SongInfo:
-	songCount = 0
+	songCount = 0 # song counter
 
 	def __init__(self, timestamp, artist, song):
-		self.timestamp = timestamp
-		self.artist = artist
-		self.song = song
-		SongInfo.songCount += 1
+		self.timestamp = timestamp  # timestamp in milliseconds
+		self.artist = artist # artist name
+		self.song = song #  song name
+		SongInfo.songCount += 1  # increase song counter
 
+		# keeps track of amount of songs
 	def displaySongCount(self):
 		print "Total songs: %d" % SongInfo.songCount
-
-	def displaySongInfo(self):
-		print self.timestamp, ";", self.artist, "-", self.song
 
 
 #  downloads the json file from helmiradio.fi and more
@@ -37,11 +36,12 @@ def get_songs():
 
 	# this puts all songs (timestamp, artist, song-name) to s_list
 	while i != length:
-		current_song = songs['result'][i]
-	 	song_time = convert_time(current_song['timestamp'])
-		song_artist = current_song['artist']
-		song_name = current_song['song']
+		current_song = songs['result'][i] # current song
+	 	song_time = convert_time(current_song['timestamp']) # songs timestamp
+		song_artist = current_song['artist'] # artist
+		song_name = current_song['song'] # song name
 
+		#  adds to s_list
 		s_list.append(SongInfo(song_time, song_artist, song_name))
 
 		i += 1
